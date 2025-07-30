@@ -1,12 +1,14 @@
 from pydantic import BaseModel
 
-class Mahasiswa(BaseModel):
-    id: int
+class CreateMahasiswa(BaseModel):
     nama: str
     nim: str
     id_prov: str
     angkatan: str
     tinggi_badan: int
+
+class Mahasiswa(CreateMahasiswa):
+    id: int  # Untuk response (GET)
 
 class UpdateMahasiswa(BaseModel):
     nama: str | None = None
