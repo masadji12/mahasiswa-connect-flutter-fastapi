@@ -32,4 +32,4 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000 # Jalan ini yang ini Setala
 ```
 Server akan berjalan di http://127.0.0.1:8000 atau http://127.0.0.1:8000/docs
 
-![Tampilan Api](/images/Api.png)
+![Tampilan Api](images/Api.png)
