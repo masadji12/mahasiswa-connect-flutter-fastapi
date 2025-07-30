@@ -72,3 +72,17 @@ def patch_mahasiswa(id: int, m: UpdateMahasiswa):
         return {"pesan": "Data mahasiswa berhasil diperbarui"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@route.delete("/mahasiswa/{id}")
+def delete_mahasiswa(id: int):
+    try:
+        con = get_connection()
+        cursor = con.cursor()
+        query = """DELETE FROM mahasiswa WHERE id = %s"""
+        cursor.execute(query, (id,))
+        con.commit()
+        cursor.close()
+        con.close()
+        return{"Pesan": "Mahasiswa id {id} berhasil dihapus"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
