@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException
-from models.mahasiswa_model import Mahasiswa, CreateMahasiswa
+from models.mahasiswa_model import Mahasiswa, CreateMahasiswa, UpdateMahasiswa
 from db.database import get_connection
 
 route = APIRouter()
@@ -29,5 +29,46 @@ def create_mahasiswa(m: CreateMahasiswa):
         cursor.close()
         con.close()
         return {"Pesan": "Mahasiswa Berhasil ditambahkan"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+from models.mahasiswa_model import UpdateMahasiswa
+
+@route.patch("/mahasiswa/{id}")
+def patch_mahasiswa(id: int, m: UpdateMahasiswa):
+    try:
+        con = get_connection()
+        cursor = con.cursor()
+
+        update_fields = []
+        values = []
+
+        if m.nama is not None:
+            update_fields.append("nama = %s")
+            values.append(m.nama)
+        if m.nim is not None:
+            update_fields.append("nim = %s")
+            values.append(m.nim)
+        if m.id_prov is not None:
+            update_fields.append("id_prov = %s")
+            values.append(m.id_prov)
+        if m.angkatan is not None:
+            update_fields.append("angkatan = %s")
+            values.append(m.angkatan)
+        if m.tinggi_badan is not None:
+            update_fields.append("tinggi_badan = %s")
+            values.append(m.tinggi_badan)
+
+        if not update_fields:
+            raise HTTPException(status_code=400, detail="Tidak ada data yang dikirim untuk diupdate.")
+
+        query = f"UPDATE mahasiswa SET {', '.join(update_fields)} WHERE id = %s"
+        values.append(id)
+
+        cursor.execute(query, values)
+        con.commit()
+        cursor.close()
+        con.close()
+        return {"pesan": "Data mahasiswa berhasil diperbarui"}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
