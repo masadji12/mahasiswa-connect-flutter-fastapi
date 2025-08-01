@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mahasiswa/pages/grid_mahasiswa_page.dart';
 import 'package:flutter_mahasiswa/pages/list_mahasiswa_page.dart';
 
 void main() {
@@ -32,7 +33,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
 
   final List<Widget> _pages = [
     ListMahasiswaPage(),
-    Center(child: Text('GridView Mahasiswa')),
+    GridMahasiswaPage(),
     Center(child: Text('Tambah Mahasiswa')),
     Center(child: Text('Profil')),
   ];
