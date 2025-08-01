@@ -3,7 +3,7 @@ class Mahasiswa{
   final String nama;
   final String nim;
   final String id_prov;
-  final int angkatan;
+  final String angkatan;
   final int tinggi_badan;
 
   Mahasiswa({

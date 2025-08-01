@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mahasiswa/pages/list_mahasiswa_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,7 @@ class _BottomNavPageState extends State<BottomNavPage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    Center(child: Text('ListView Mahasiswa')),
+    ListMahasiswaPage(),
     Center(child: Text('GridView Mahasiswa')),
     Center(child: Text('Tambah Mahasiswa')),
     Center(child: Text('Profil')),
@@ -39,7 +40,6 @@ class _BottomNavPageState extends State<BottomNavPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Flutter Mahasiswa')),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
