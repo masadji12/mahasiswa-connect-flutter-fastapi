@@ -26,13 +26,19 @@ def create_mahasiswa(m: CreateMahasiswa):
         query = "INSERT INTO mahasiswa (nama, nim, id_prov, angkatan, tinggi_badan) VALUES (%s, %s, %s, %s, %s)"
         cursor.execute(query, (m.nama, m.nim, m.id_prov, m.angkatan, m.tinggi_badan))
         con.commit()
+        mahasiswa_id = cursor.lastrowid
         cursor.close()
         con.close()
-        return {"Pesan": "Mahasiswa Berhasil ditambahkan"}
+        return {
+            "id": mahasiswa_id,
+            "nama": m.nama,
+            "nim": m.nim,
+            "id_prov": m.id_prov,
+            "angkatan": m.angkatan,
+            "tinggi_badan": m.tinggi_badan,
+        }
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-
-from models.mahasiswa_model import UpdateMahasiswa
 
 @route.patch("/mahasiswa/{id}")
 def patch_mahasiswa(id: int, m: UpdateMahasiswa):
