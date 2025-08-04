@@ -52,4 +52,4 @@ Ganti IP tersebut sesuai IP lokal komputer tempat FastAPI berjalan (gunakan ipco
 ![Edit Mahasiswa](images/Edit.png)
 
 6. **Hapus Mahasiswa**
-![Hapus Mahasiswa](images/hapus.png)
+![Hapus Mahasiswa](images/hapus1.png)
