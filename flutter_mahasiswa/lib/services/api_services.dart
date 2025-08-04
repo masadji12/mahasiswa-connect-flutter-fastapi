@@ -16,6 +16,7 @@ class ApiServices {
     }
   }
 
+
   static Future<Map<String, dynamic>?> addMahasiswa(Map<String, dynamic> data) async {
   final response = await http.post(
     Uri.parse('$baseUrl/mahasiswa'),
@@ -29,4 +30,28 @@ class ApiServices {
     return null;
   }
 }
+  static Future<void> deletemahasiswa(int id) async{
+    final response = await http.delete(
+      Uri.parse('$baseUrl/mahasiswa/$id')
+    );
+
+    if(response.statusCode != 200){
+      throw Exception('Gagal menghapus data mahasiswa');
+    }
+  }
+
+  static Future<bool> updateMahasiswa(int id, Map<String, dynamic> data) async {
+    final response = await http.patch(
+      Uri.parse('$baseUrl/mahasiswa/$id'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(data),
+    );
+
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      print('Gagal update: ${response.statusCode} - ${response.body}');
+      return false;
+    }
+  }
 }
