@@ -15,4 +15,14 @@ class ApiServices {
       throw Exception('Gagal Memuat data mahasiswa');
     }
   }
+
+  static Future<void> deletemahasiswa(int id) async{
+    final response = await http.delete(
+      Uri.parse('$baseUrl/mahasiswa/$id')
+    );
+
+    if(response.statusCode != 200){
+      throw Exception('Gagal menghapus data mahasiswa');
+    }
+  }
 }
