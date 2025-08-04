@@ -25,4 +25,20 @@ class ApiServices {
       throw Exception('Gagal menghapus data mahasiswa');
     }
   }
+
+  static Future<bool> updateMahasiswa(int id, Map<String, dynamic> data) async {
+    final response = await http.patch(
+      Uri.parse('$baseUrl/mahasiswa/$id'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode(data),
+    );
+
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      print('Gagal update: ${response.statusCode} - ${response.body}');
+      return false;
+    }
+  }
+
 }
