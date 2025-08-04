@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mahasiswa/services/api_services.dart';
 import '../models/mahasiswa.dart';
 
 class DetailMahasiswaPage extends StatelessWidget {
@@ -45,9 +46,39 @@ class DetailMahasiswaPage extends StatelessWidget {
                 ),
                 const SizedBox(width: 10,),
                 ElevatedButton(
-                  onPressed: (){
-                    // Konfirmasi dan hapus data
-                  }, 
+                  onPressed: () async{
+                    final confirm = await showDialog<bool>(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text('Konfirmasi'),
+                        content: Text('yakin ingin menghapus dati ini?'),
+                        actions: [
+                          TextButton(
+                            child: Text('Batal'),
+                            onPressed: () => Navigator.of(context).pop(false)
+                          ),
+
+                          TextButton(
+                            onPressed: () => Navigator.of(context).pop(true), 
+                            child: Text('Hapus')
+                          )
+                        ],
+                      )
+                    );
+                    if (confirm == true) {
+                      try {
+                        await ApiServices.deletemahasiswa(mahasiswa.id);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Data berhasil dihapus')),
+                        );
+                        Navigator.pop(context);
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Gagal Menghapus data')),
+                        );
+                      }
+                    }
+                  },
                   style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
                   child: Text('Hapus'))
               ],
