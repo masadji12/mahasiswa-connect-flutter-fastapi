@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mahasiswa/pages/grid_mahasiswa_page.dart';
 import 'package:flutter_mahasiswa/pages/list_mahasiswa_page.dart';
-import 'package:flutter_mahasiswa/pages/tambah_mahasiswa_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,7 +34,6 @@ class _BottomNavPageState extends State<BottomNavPage> {
   final List<Widget> _pages = [
     ListMahasiswaPage(),
     GridMahasiswaPage(),
-    TambahMahasiswaPage(),
     Center(child: Text('Profil')),
   ];
 
