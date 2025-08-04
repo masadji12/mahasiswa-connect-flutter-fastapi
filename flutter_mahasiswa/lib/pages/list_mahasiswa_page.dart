@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mahasiswa/pages/detail_mahasiswa_page.dart';
 import '../models/mahasiswa.dart';
 import '../services/api_services.dart';
 
@@ -37,7 +38,11 @@ class _ListMahasiswaPageState extends State<ListMahasiswaPage> {
                   subtitle: Text('NIM: ${mhs.nim} - Angkatan: ${mhs.angkatan}'),
                   trailing: Text('${mhs.tinggi_badan} cm'),
                   onTap: (){
-
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(
+                        builder: (context) => DetailMahasiswaPage(mahasiswa: mhs))
+                    );
                   },
                 );
               }

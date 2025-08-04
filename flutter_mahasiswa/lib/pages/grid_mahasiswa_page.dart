@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mahasiswa/pages/detail_mahasiswa_page.dart';
 import '../models/mahasiswa.dart';
 import '../services/api_services.dart';
 
@@ -45,24 +46,34 @@ class _GridMahasiswaPageState extends State<GridMahasiswaPage>{
               itemCount: mahasiswa.length,
               itemBuilder: (context, index){
                 final mhs = mahasiswa[index];
-                return Card(
-                  elevation: 4,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          mhs.nama,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        const SizedBox(height: 8,),
-                        Text('NIM: ${mhs.nama}'),
-                        Text('Angkatan: ${mhs.angkatan}'),
-                      ],
+                return GestureDetector(
+                  onTap: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailMahasiswaPage(mahasiswa: mhs),
+                      ),
+                    );
+                  },
+                  child:  Card(
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            mhs.nama,
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 8,),
+                          Text('NIM: ${mhs.nama}'),
+                          Text('Angkatan: ${mhs.angkatan}'),
+                        ],
+                      ),
                     ),
                   ),
                 );
