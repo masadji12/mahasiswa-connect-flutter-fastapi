@@ -29,6 +29,7 @@ class DetailMahasiswaPage extends StatelessWidget {
 
             Text('Nama: ${mahasiswa.nama}', style: TextStyle(fontSize: 20),),
             Text('NIM: ${mahasiswa.nim}', style: TextStyle(fontSize: 20),),
+            Text('ID Provinsi: ${mahasiswa.id_prov}', style: TextStyle(fontSize: 20),),
             Text('Angkatan: ${mahasiswa.angkatan}', style: TextStyle(fontSize: 20),),
             Text('Tinggi Badan: ${mahasiswa.tinggi_badan} cm', style: TextStyle(fontSize: 20),),
 
