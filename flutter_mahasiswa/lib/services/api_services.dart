@@ -16,6 +16,20 @@ class ApiServices {
     }
   }
 
+
+  static Future<Map<String, dynamic>?> addMahasiswa(Map<String, dynamic> data) async {
+  final response = await http.post(
+    Uri.parse('$baseUrl/mahasiswa'),
+    headers: {'Content-Type': 'application/json'},
+    body: jsonEncode(data),
+  );
+
+  if (response.statusCode == 200 || response.statusCode == 201) {
+    return jsonDecode(response.body);
+  } else {
+    return null;
+  }
+}
   static Future<void> deletemahasiswa(int id) async{
     final response = await http.delete(
       Uri.parse('$baseUrl/mahasiswa/$id')
@@ -40,5 +54,4 @@ class ApiServices {
       return false;
     }
   }
-
 }
