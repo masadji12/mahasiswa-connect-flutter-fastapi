@@ -15,6 +15,7 @@ Import Database file mahasiswa_db yang ada di folder database ke dalam mysql
 
 ### 2. Install  dan Aktifkan Virtual Environment (opsional tapi disarankan)
 #### 2.1 Install Virtual Env
+Buka CMD atau Terminal dan pastikan didalam folder werservice_fastapi dan jalankan perintah dibawah ini
 ```bash
 python -m venv env
 ```
