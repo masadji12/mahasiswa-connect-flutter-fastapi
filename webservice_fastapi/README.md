@@ -10,22 +10,24 @@ Ini adalah backend REST API untuk aplikasi Mahasiswa Connect menggunakan FastAPI
 - Pydantic
 
 ## ⚙️ Setup & Menjalankan Server
+### 1. Import Database
+Import Database file mahasiswa_db yang ada di folder database ke dalam mysql
 
-### 1. Install  dan Aktifkan Virtual Environment (opsional tapi disarankan)
-#### 1.1 Install Virtual Env
+### 2. Install  dan Aktifkan Virtual Environment (opsional tapi disarankan)
+#### 2.1 Install Virtual Env
 ```bash
 python -m venv env
 ```
-#### 1.2 AKtifkan Virtual Env
+#### 2.2 AKtifkan Virtual Env
 ```bash
 source env/bin/activate        # (Linux/Mac)
 env\Scripts\activate           # (Windows)
 ```
-### 2. Install Dependencies
+### 3. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
-### 3. Jalankan FastApi Server
+### 4. Jalankan FastApi Server
 ```bash
 uvicorn main:app --reload
 uvicorn main:app --reload --host 0.0.0.0 --port 8000 # Jalan ini yang ini Setalah Poject flutter sudah siap diTesting
