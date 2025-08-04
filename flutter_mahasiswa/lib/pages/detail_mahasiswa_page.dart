@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mahasiswa/pages/edit_mahasiswa_page.dart';
 import 'package:flutter_mahasiswa/services/api_services.dart';
 import '../models/mahasiswa.dart';
 
@@ -40,7 +41,12 @@ class DetailMahasiswaPage extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: (){
-                    // navigati halaman edit,
+                    Navigator.push(
+                      context, 
+                      MaterialPageRoute(
+                        builder: (context) => EditMahasiswaPage(mahasiswa: mahasiswa)
+                      )
+                    );
                   }, 
                   child: const Text('Edit'),
                 ),
