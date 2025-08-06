@@ -11,7 +11,7 @@ Ini adalah backend REST API untuk aplikasi Mahasiswa Connect menggunakan FastAPI
 
 ## ⚙️ Setup & Menjalankan Server
 ### 1. Import Database
-Import Database file mahasiswa_db yang ada di folder database ke dalam mysql
+Import Database file mahasiswa_db yang ada di folder database ke dalam mysql dan pastikan mysql running
 
 ### 2. Install  dan Aktifkan Virtual Environment (opsional tapi disarankan)
 #### 2.1 Install Virtual Env
